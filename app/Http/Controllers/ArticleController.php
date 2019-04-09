@@ -30,7 +30,6 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
         $article->update($request->all());
-
         return $article;
     }
 
@@ -38,7 +37,6 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
         $article->delete();
-
         return 204;
     }
 
