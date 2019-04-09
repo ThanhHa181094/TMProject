@@ -15,16 +15,8 @@ $router->get('/', function () use ($router) {
     return view('welcome');
 });
 $router->get('article', 'ArticleController@showAllArticle');
+$router->get('article/{id}', 'ArticleController@getArticleById');
+$router->post('article', 'ArticleController@createArticle');
+$router->delete('article/{id}', 'ArticleController@deleteArticle');
+$router->put('article/{id}', 'ArticleController@updateArticle');
 
-
-//$router->group(['prefix' => 'api'], function () use ($router) {
-//    $router->get('article',  ['uses' => 'ArticleController@showAllArticle']);
-
-//    $router->get('authors/{id}', ['uses' => 'AuthorController@showOneAuthor']);
-//
-//    $router->post('authors', ['uses' => 'AuthorController@create']);
-//
-//    $router->delete('authors/{id}', ['uses' => 'AuthorController@delete']);
-//
-//    $router->put('authors/{id}', ['uses' => 'AuthorController@update']);
-//});

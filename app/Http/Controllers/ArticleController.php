@@ -14,32 +14,32 @@ class ArticleController extends Controller
         return response()->json(Article::all());
     }
 
-//    public function getArticleById($id)
-//    {
-//        return Article::find($id);
-//    }
-//
-//    public function createArticle(Request $request)
-//    {
-//        Article::create($request->all());
-//        return 'create success';
-//
-//    }
-//
-//    public function updateArticle(Request $request, $id)
-//    {
-//        $article = Article::findOrFail($id);
-//        $article->update($request->all());
-//
-//        return $article;
-//    }
-//
-//    public function deleteArticle(Request $request, $id)
-//    {
-//        $article = Article::findOrFail($id);
-//        $article->delete();
-//
-//        return 204;
-//    }
+    public function getArticleById($id)
+    {
+        return Article::find($id);
+    }
+
+    public function createArticle(Request $request)
+    {
+        Article::create($request->all());
+        return 'create success';
+
+    }
+
+    public function updateArticle(Request $request, $id)
+    {
+        $article = Article::findOrFail($id);
+        $article->update($request->all());
+
+        return $article;
+    }
+
+    public function deleteArticle(Request $request, $id)
+    {
+        $article = Article::findOrFail($id);
+        $article->delete();
+
+        return 204;
+    }
 
 }
