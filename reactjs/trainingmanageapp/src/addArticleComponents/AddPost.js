@@ -24,11 +24,12 @@ class AddPost extends Component{
     render(){
         return(
             <div className="row">
+                <h5>Add Post</h5>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="input-field col s4">
+                    <div className="input-field col s12">
                         <input name="title" autoComplete="off" placeholder="Enter your title" required type="text" onChange={ this.updateState} />
                     </div>
-                    <div className="input-field col s4">
+                    <div className="input-field col s12">
                         <input name="content" autoComplete="off" type="text" required placeholder="Enter your content" onChange={ this.updateState } />
                     </div>
                     <div className="input-field col s2">

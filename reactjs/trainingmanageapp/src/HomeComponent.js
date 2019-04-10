@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import './App.css';
 import './bootstrap.min.css';
 
-class App extends Component {
+class HomeComponent extends Component {
     render() {
         return (
             
@@ -116,4 +117,4 @@ class App extends Component {
     }
 }
 
-export default App
+export default HomeComponent

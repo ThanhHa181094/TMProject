@@ -7,6 +7,17 @@ class Posts extends Component{
         this.props.updatePost(this.indexNum, this.title.value, this.content.value);
     }
 
+    updatePost = (i, post, content) => {
+        let posts = this.state.posts;
+        posts[i].post = post;
+        posts[i].content = content;
+        posts[i].isEditing = false;
+
+        this.setState({
+            posts
+        });
+
+    }
     render(){
 
         const {allPosts} = this.props;
@@ -18,6 +29,9 @@ class Posts extends Component{
                 <tr  key={index}>
                     <td><input type="text" ref={(val) => {this.title = val}} required defaultValue={post.title}/></td>
                     <td><input type="text" ref={(val) => {this.content = val}} required defaultValue={post.content}/></td>
+                    <td>
+                    <input type="button" value="Update" onClick={this.handleUpdate} ref={() => {this.indexNum = index}} className="btn green"/>
+                    </td>
                 </tr>  
 
             ) : (
