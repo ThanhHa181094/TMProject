@@ -4,23 +4,28 @@
   box-sizing: border-box;
 }
 
-body{
-	background-color: rgba(45, 45, 45, 0.9)
+#main-menu{
+	width: 100%;
+	margin:auto;
 }
 
-#content{
-	background-color: white;
+#main-menu #item{
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.carousel-inner{
+.banner{
+	height: 50%
+}
+
+.banner img{
+	max-width: 100%
+}
+
+.all{
+	margin: 100px 0 100px 0
+}
+
+#carousel-pic{
   height: 60vh;
-}
-
-.pic{
-	max-width: 100%;
-
-}
-
-#content p{
-	line-height: 2
 }

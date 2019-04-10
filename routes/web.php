@@ -12,5 +12,11 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return view('welcome');
 });
+$router->get('article', 'ArticleController@showAllArticle');
+$router->get('article/{id}', 'ArticleController@getArticleById');
+$router->post('article', 'ArticleController@createArticle');
+$router->delete('article/{id}', 'ArticleController@deleteArticle');
+$router->put('article/{id}', 'ArticleController@updateArticle');
+
