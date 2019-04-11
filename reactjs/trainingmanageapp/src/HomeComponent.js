@@ -1,10 +1,27 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
+import axios from 'axios';
 
-class App extends Component {
+
+
+class HomeComponent extends Component {
+    constructor() {
+        super();
+        this.state = { items: [] };
+    }
+    componentDidMount() {
+        axios.get('http://localhost/article')
+            .then(response => {
+                console.log(response.data);
+                this.setState({ items: response.data });
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+    }
     render() {
         return (
-            
+
             <div className="App">
                 {/* Image Slide  */}
                 <div id="carouselExampleControls" className="carousel slide" >
@@ -56,57 +73,18 @@ class App extends Component {
                 {/* Content */}
                 <div className="container">
                     <div className="all">
-                        <div className="card-deck">
-                            <div className="card">
-                                <img src={require("./images/item-pic.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <img src={require("./images/item-pic.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <img src={require("./images/item-pic.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="card-deck mt-5">
-                            <div className="card">
-                                <img src={require("./images/item-pic.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <img src={require("./images/item-pic.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                            </div>
-                            <div className="card">
-                                <img src={require("./images/item-pic.jpg")} className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
+                        <div className="card-columns">
+                            <div>
+                                {this.state.items.map(item =>
+                                    <div className="card" key={item.id}>
+                                        <img id="picture" src={item.image_link} className="card-img-top" alt="..." />
+                                        <div className="card-body">
+                                            <h5 className="card-title">{item.title}</h5>
+                                            <p className="card-text">{item.content}</p>
+                                            <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -116,4 +94,4 @@ class App extends Component {
     }
 }
 
-export default App
+export default HomeComponent
