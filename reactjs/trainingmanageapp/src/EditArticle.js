@@ -20,10 +20,9 @@ class EditArticle extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost/article/100')
+        axios.get('http://localhost/article/49')
             .then(response => {
                 this.setState(response.data)
-                console.log(response.data);
             })
             .catch(function (error) {
                 console.log(error)
@@ -74,9 +73,9 @@ class EditArticle extends Component {
             video_link: this.state.video_link
         }
         console.log(article);
-        axios.put('http://localhost/article/100', article)
+        axios.put('http://localhost/article/49', article)
             .then(response => {
-
+                console.log(article.image);
             })
             .catch(function (error) {
                 console.log(error);
