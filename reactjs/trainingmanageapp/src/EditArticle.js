@@ -75,7 +75,7 @@ class EditArticle extends Component {
         console.log(article);
         axios.put('http://localhost/article/49', article)
             .then(response => {
-                console.log(article.image);
+                console.log(response);
             })
             .catch(function (error) {
                 console.log(error);
