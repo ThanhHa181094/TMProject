@@ -97,7 +97,7 @@ class EditArticle extends Component {
                             <input type='text' className='form-control' name='content' id='content' required value={this.state.content} onChange={this.handleChangeContent} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor='image_link'>Image</label>
+                            <label htmlFor='image'>Image</label>
                             <span className='btn btn-default btn-file'>
                                 <input type='file' id='image' name='image' onChange={this.handleChangeImage} required />
                             </span>
