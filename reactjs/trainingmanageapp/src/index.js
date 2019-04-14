@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import HomeComponent from './HomeComponent';
+import DeleteComponent from './DeleteComponent';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<HomeComponent />, document.getElementById('root'));
+ReactDOM.render(<DeleteComponent />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
