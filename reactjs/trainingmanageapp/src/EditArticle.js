@@ -3,7 +3,6 @@ import './bootstrap.min.css';
 import axios from 'axios';
 
 function FormError(props) {
-    /* nếu isHidden = true, return null ngay từ đầu */
     if (props.isHidden) { return null; }
 
     return (<div className='alert alert-warning'>{props.errorMessage}</div>)
@@ -105,6 +104,12 @@ class EditArticle extends Component {
     }
 
     render() {
+        let $imagePreview = null;
+        if (this.state.image && this.checkBase64IsImage(this.state.image)) {
+            $imagePreview = (<img src={this.state.image} />);
+        } else {
+            $imagePreview = null;
+        }
 
         return (
             <div>
@@ -126,8 +131,11 @@ class EditArticle extends Component {
                         <div className="form-group">
                             <label htmlFor='image'>Image</label>
                             <span className='btn btn-default btn-file'>
-                                <input type='file' id='image' name='image' value = {this.state.image} onChange={this.handleChangeImage} required />
+                                <input type='file' id='image' name='image' onChange={this.handleChangeImage} required />
                             </span>
+                        </div>
+                        <div>
+                            {$imagePreview}
                         </div>
                         <div className='form-group'>
                             <label htmlFor='video_link'>Video link</label>
