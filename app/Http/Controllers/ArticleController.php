@@ -89,4 +89,13 @@ class ArticleController extends Controller
         $article->delete();
         return 204;
     }
+
+    public function updateView(Request $request, $id)
+    {
+        $article = Article::find($id);
+        $article->views = $request->input('views');
+        $article->save();
+        return 'Views increased';
+
+    }
 }
