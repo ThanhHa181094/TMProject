@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
 import axios from 'axios';
+import { Editor } from '@tinymce/tinymce-react';
 
 function FormError(props) {
     if (props.isHidden) { return null; }
@@ -45,7 +46,7 @@ class EditArticle extends Component {
 
     handleChangeContent(e) {
         this.setState({
-            content: e.target.value
+            content: e.target.getContent()
         });
     }
 
@@ -121,10 +122,18 @@ class EditArticle extends Component {
                             <label htmlFor='title'>Title</label>
                             <input type='text' className='form-control' name='title' id='title' required value={this.state.title} onChange={this.handleChangeTitle} />
                         </div>
-                        <div className='form-group'>
+                        {/* <div className='form-group'>
                             <label htmlFor='content'>Content</label>
                             <input type='text' className='form-control' name='content' id='content' required value={this.state.content} onChange={this.handleChangeContent} />
-                        </div>
+                        </div> */}
+                        <Editor
+                            initialValue={this.state.content}
+                            init={{
+                                plugins: 'link image code',
+                                toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+                            }}
+                            onChange={this.handleChangeContent}
+                        />
                         <FormError
                             isHidden={this.state.isInputValid}
                             errorMessage={this.state.errorMessage} />
