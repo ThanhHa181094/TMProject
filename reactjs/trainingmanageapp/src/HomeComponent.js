@@ -4,8 +4,6 @@ import axios from 'axios';
 import ReactDOM from "react-dom";
 import Pagination from "react-js-pagination";
 import './bootstrap.min.css';
-import MenuComponent from './MenuComponent';
-
 
 
 class HomeComponent extends Component {
@@ -96,32 +94,7 @@ class HomeComponent extends Component {
                     </a>
                 </div>
 
-                {/* Menu */}
-                <nav className="navbar navbar-expand-lg navbar-light bg-light" id="menu">
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
-
-                        <ul className="navbar-nav" id="Main_Menu">
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Home</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">About us</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">News</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                               <a className="nav-link" href="#">Elements</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+               
 
                 {/* Content */}
                 <div className="container" id="All_Content">
