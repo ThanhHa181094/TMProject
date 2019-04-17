@@ -14,7 +14,7 @@ class DeleteComponent extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.delete(`https://localhost/${this.state.id}`)
+    axios.delete(`http://localhost/article/${this.state.id}`)
       .then(res => {
         console.log(res);
         console.log(res.data);
