@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-
-import HomeComponent from './HomeComponent';
 import * as serviceWorker from './serviceWorker';
+import HomeComponent from './HomeComponent';
 
 ReactDOM.render(<HomeComponent />, document.getElementById('root'));
 

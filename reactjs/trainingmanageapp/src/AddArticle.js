@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
+import HomeComponent from './HomeComponent';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 
@@ -90,31 +91,7 @@ class AddArticle extends Component {
         return (
             <div>
                 {/* Menu */}
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
-
-                        <ul className="navbar-nav" id="main-menu">
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Home</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">About us</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">News</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Elements</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                {/* <MenuComponent /> */}
                 <hr />
 
                 {/* Form add article */}
@@ -129,6 +106,7 @@ class AddArticle extends Component {
                             <label htmlFor='content'>Content</label>
                             <Editor
                                 init={{
+                                    height: 300,
                                     plugins: 'link image code',
                                     toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
                                 }}

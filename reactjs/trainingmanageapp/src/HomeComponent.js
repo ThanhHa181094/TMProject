@@ -1,58 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import './bootstrap.min.css';
+import MenuComponent from './MenuComponent';
 
 class HomeComponent extends Component {
     render() {
         return (
-            
             <div className="App">
-                {/* Image Slide  */}
-                <div id="carouselExampleControls" className="carousel slide" >
-                    <div className="carousel-inner" id="carousel-pic">
-                        <div className="carousel-item active">
-                            <img src={require("./images/banner2.jpg")} className="d-block w-100" alt="..." />
-                        </div>
-                        <div className="carousel-item">
-                            <img src={require("./images/banner1.jpg")} className="d-block w-100" alt="..." />
-                        </div>
-                    </div>
-                    <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Previous</span>
-                    </a>
-                    <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span className="sr-only">Next</span>
-                    </a>
-                </div>
-
-                {/* Menu */}
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
-
-                        <ul className="navbar-nav" id="main-menu">
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Home</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">About us</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">News</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Elements</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                <MenuComponent />
 
                 {/* Content */}
                 <div className="container">
