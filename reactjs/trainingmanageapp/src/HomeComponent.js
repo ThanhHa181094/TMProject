@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './App.css';
 import axios from 'axios';
 import ReactDOM from "react-dom";
 import Pagination from "react-js-pagination";
