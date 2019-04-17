@@ -4,8 +4,9 @@ import './index.css';
 
 import * as serviceWorker from './serviceWorker';
 import HomeComponent from './HomeComponent';
+import AddArticle from './AddArticle';
 
-ReactDOM.render(<HomeComponent />, document.getElementById('root'));
+ReactDOM.render(<AddArticle />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

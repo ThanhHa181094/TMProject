@@ -4,6 +4,7 @@ import axios from 'axios';
 import ReactDOM from "react-dom";
 import Pagination from "react-js-pagination";
 import './bootstrap.min.css';
+import './App.css';
 import MenuComponent from './MenuComponent';
 
 

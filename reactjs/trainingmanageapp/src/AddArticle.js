@@ -12,6 +12,7 @@ class AddArticle extends Component {
             content: '',
             image: '',
             video_link: '',
+            isInputValid: true
         }
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -82,17 +83,22 @@ class AddArticle extends Component {
                     console.log(error);
                 });
         } else {
-
+            this.setState({
+                isInputValid: false
+            });
         }
     }
 
     render() {
-
+        let $imagePreview = null;
+        if (this.state.image && this.checkBase64IsImage(this.state.image)) {
+            $imagePreview = (<img src={this.state.image} />);
+        } else {
+            $imagePreview = null;
+        }
+        
         return (
             <div>
-                {/* Menu */}
-                {/* <MenuComponent /> */}
-                <hr />
 
                 {/* Form add article */}
                 <div className='container'>
