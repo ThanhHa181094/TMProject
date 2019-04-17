@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import HomeComponent from './HomeComponent';
-import DeleteComponent from './DeleteComponent';
-import DetailComponent from './DetailComponent';
+import EditArticle from './EditArticle';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<DetailComponent />, document.getElementById('root'));
+ReactDOM.render(<EditArticle />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

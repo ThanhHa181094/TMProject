@@ -80,7 +80,7 @@ class DetailComponent extends React.Component{
 
                             <ul className="navbar-nav" id="Main_Menu">
                                 <li className="nav-item" id="item">
-                                    <a className="nav-link" href="#">Home</a>
+                                    <a className="nav-link" href="">Home</a>
                                 </li>
                                 <li className="nav-item" id="item">
                                     <a className="nav-link" href="#">About us</a>
