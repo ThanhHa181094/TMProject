@@ -122,13 +122,10 @@ class EditArticle extends Component {
                             <label htmlFor='title'>Title</label>
                             <input type='text' className='form-control' name='title' id='title' required value={this.state.title} onChange={this.handleChangeTitle} />
                         </div>
-                        {/* <div className='form-group'>
-                            <label htmlFor='content'>Content</label>
-                            <input type='text' className='form-control' name='content' id='content' required value={this.state.content} onChange={this.handleChangeContent} />
-                        </div> */}
                         <Editor
                             initialValue={this.state.content}
                             init={{
+                                height: 300,
                                 plugins: 'link image code',
                                 toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
                             }}
