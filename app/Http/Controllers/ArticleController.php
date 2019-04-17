@@ -52,13 +52,12 @@ class ArticleController extends Controller
             file_put_contents("images/{$name}", $image);
             $article->image_link = $name;
         }
-        $article->image_link = "default.png";
         $article->title = $request->input('title');
         $article->content = $request->input('content');
         $article->video_link = $request->input('video_link');
         $article->save();
-
-        return 'create success';
+        
+        return $article;
     }
 
     public function updateArticle(Request $request, $id)

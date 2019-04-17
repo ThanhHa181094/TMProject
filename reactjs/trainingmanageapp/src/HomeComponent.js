@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+
 import axios from 'axios';
 import ReactDOM from "react-dom";
 import Pagination from "react-js-pagination";
 import './bootstrap.min.css';
-
-
-
+import MenuComponent from './MenuComponent';
 
 
 
@@ -141,8 +140,5 @@ class HomeComponent extends Component {
     }
 }
 
-ReactDOM.render(
-    <HomeComponent />,
-    document.getElementById('root')
-);
+
 export default HomeComponent
