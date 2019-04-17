@@ -3,6 +3,7 @@ import './bootstrap.min.css';
 import HomeComponent from './HomeComponent';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
+import { Redirect } from 'react-router-dom';
 
 class AddArticle extends Component {
     constructor(props) {
@@ -12,6 +13,8 @@ class AddArticle extends Component {
             content: '',
             image: '',
             video_link: '',
+            isInputValid: true,
+            isRedirect: false
         }
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -76,7 +79,10 @@ class AddArticle extends Component {
         if (this.checkBase64IsImage(article.image)) {
             axios.post('http://localhost/article', article)
                 .then(response => {
-                    console.log(response);
+                  
+                    this.setState({
+                        isRedirect: true
+                    })
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -87,7 +93,18 @@ class AddArticle extends Component {
     }
 
     render() {
+        let $imagePreview = null;
+        if (this.state.image && this.checkBase64IsImage(this.state.image)) {
+            $imagePreview = (<img src={this.state.image} />);
+        } else {
+            $imagePreview = null;
+        }
 
+        if(this.state.isRedirect == true){
+            return(
+                <Redirect to='/'/>
+            )
+        }
         return (
             <div>
                 {/* Menu */}
@@ -119,6 +136,9 @@ class AddArticle extends Component {
                             <span className='btn btn-default btn-file'>
                                 <input type='file' id='image' name='image' onChange={this.handleChangeImage} required accept=".jpg,.png,.gif,.jpeg" />
                             </span>
+                        </div>
+                        <div>
+                            {$imagePreview}
                         </div>
                         <div className='form-group'>
                             <label htmlFor='video_link'>Video link</label>

@@ -4,6 +4,8 @@ import axios from 'axios';
 import ReactDOM from "react-dom";
 import Pagination from "react-js-pagination";
 import './bootstrap.min.css';
+import './App.css';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 
 class HomeComponent extends Component {
@@ -45,7 +47,7 @@ class HomeComponent extends Component {
                     <img id="picture" src={item.image_link} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h5 className="card-title">{item.title}</h5>
-                        <p className="card-text">{item.content}</p>
+                        <p className="card-text">{ReactHtmlParser(item.content)}</p>
                         <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
