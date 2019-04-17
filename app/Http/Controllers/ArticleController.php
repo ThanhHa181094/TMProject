@@ -93,7 +93,7 @@ class ArticleController extends Controller
     public function updateView(Request $request, $id)
     {
         $article = Article::find($id);
-        $article->views = $request->input('views');
+        $article->views = $request->input('views') + 1;
         $article->save();
         return 'Views increased';
 
