@@ -44,7 +44,7 @@ class App extends Component {
                                 <a className="nav-link" href="#">News</a>
                             </li>
                             <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Elements</a>
+                               <a className="nav-link" href="#">Elements</a>
                             </li>
                             <li className="nav-item" id="item">
                                 <a className="nav-link" href="#">Contact Us</a>
