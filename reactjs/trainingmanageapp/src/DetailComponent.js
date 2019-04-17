@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import './DetailStyle.css';
 import './bootstrap.min.css';
@@ -60,6 +60,10 @@ class DetailComponent extends React.Component{
             .catch(function (error) {
                 console.log(error)
             });
+        axios.patch('http://localhost/article/4')
+            .then(response => {
+                console.log(response);
+            })
     }
     
     handleChange = event => {

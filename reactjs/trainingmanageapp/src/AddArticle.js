@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
-import HomeComponent from './HomeComponent';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 
