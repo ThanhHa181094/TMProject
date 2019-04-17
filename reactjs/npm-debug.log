@@ -1,22 +1,21 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/usr/bin/node',
 1 verbose cli   '/usr/bin/npm',
-<<<<<<< HEAD
+
 1 verbose cli   'i',
 1 verbose cli   '-g',
 1 verbose cli   'create-react-app@1.5.2',
 1 verbose cli   'yarn@1.7.0' ]
-=======
+
 1 verbose cli   'install',
 1 verbose cli   '-g',
 1 verbose cli   'create-react-app' ]
->>>>>>> c8c52117a8719ffd6a36d6a9ee00b648dd2c9846
 2 info using npm@3.5.2
 3 info using node@v8.10.0
 4 silly loadCurrentTree Starting
 5 silly install loadCurrentTree
 6 silly install readGlobalPackageData
-<<<<<<< HEAD
+
 7 silly fetchPackageMetaData create-react-app@1.5.2
 8 silly fetchPackageMetaData yarn@1.7.0
 9 silly fetchNamedPackageData create-react-app
@@ -11277,4 +11276,4 @@
 2195 error   path: '/usr/local/lib/node_modules/create-react-app' }
 2196 error Please try running this command again as root/Administrator.
 2197 verbose exit [ -13, true ]
->>>>>>> c8c52117a8719ffd6a36d6a9ee00b648dd2c9846
+

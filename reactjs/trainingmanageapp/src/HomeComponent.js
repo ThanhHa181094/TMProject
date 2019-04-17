@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import './bootstrap.min.css';
-
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 
 class HomeComponent extends Component {
     constructor(props) {
@@ -24,11 +24,13 @@ class HomeComponent extends Component {
                 console.log(error)
             })
     }
+
     handleClick(event) {
         this.setState({
             currentPage: Number(event.target.id)
         });
     }
+
     render() {
         const { items, currentPage, itemsPerPage } = this.state;
 
@@ -42,7 +44,8 @@ class HomeComponent extends Component {
                 <div className="card" key={item.id}>
                     <img id="picture" src={item.image_link} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">{item.title}</h5>
+                        <Link to={'/articles/detail/'+item.id}>detail</Link>
+                        <a className="card-title">{item.title}</a>
                         <p className="card-text">{item.content}</p>
                         <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>

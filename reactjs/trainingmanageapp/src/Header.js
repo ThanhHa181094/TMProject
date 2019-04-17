@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import HomeComponent from './HomeComponent';
 import AddArticle from './AddArticle';
-
+import DetailComponent from './DetailComponent';
 export default class Header extends Component {
     render() {
         return (
@@ -32,7 +32,8 @@ export default class Header extends Component {
                     </div>
                 </nav>
                 <Route exact path="/" component={HomeComponent} />
-                <Route exact path="/articles/add" component={AddArticle} />
+                <Route path="/articles/add" component={AddArticle} />
+                <Route path="/articles/detail/:id" component={DetailComponent}></Route>
             </Router>
         );
     }

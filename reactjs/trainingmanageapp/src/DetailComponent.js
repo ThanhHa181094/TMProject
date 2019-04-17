@@ -74,35 +74,7 @@ class DetailComponent extends React.Component{
     render() {
         return (
             <div class="full">
-            {/* menu */}
-                <div class="header">
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light" id="menu">
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-
-                            <ul className="navbar-nav" id="Main_Menu">
-                                <li className="nav-item" id="item">
-                                    <a className="nav-link" href="">Home</a>
-                                </li>
-                                <li className="nav-item" id="item">
-                                    <a className="nav-link" href="#">About us</a>
-                                </li>
-                                <li className="nav-item" id="item">
-                                    <a className="nav-link" href="#">News</a>
-                                </li>
-                                <li className="nav-item" id="item">
-                                    <a className="nav-link" href="#">Elements</a>
-                                </li>
-                                <li className="nav-item" id="item">
-                                    <a className="nav-link" href="#">Contact Us</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-
+                
             {/* content */}
                 <div class="container">
                     <div class="row">
