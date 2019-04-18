@@ -29,7 +29,7 @@ class EditArticle extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost/article/100')
+        axios.get('http://localhost/article/'+ this.props.match.params.id)
             .then(response => {
                 this.setState(response.data);
             })
@@ -89,7 +89,7 @@ class EditArticle extends Component {
             video_link: this.state.video_link
         }
         if (this.checkBase64IsImage(article.image)) {
-            axios.put('http://localhost/article/100', article)
+            axios.put('http://localhost/article/' +this.props.match.params.id, article)
                 .then(response => {
                     console.log(response);
                 })
@@ -107,7 +107,7 @@ class EditArticle extends Component {
     render() {
         let $imagePreview = null;
         if (this.state.image && this.checkBase64IsImage(this.state.image)) {
-            $imagePreview = (<img src={this.state.image} />);
+            $imagePreview = (<img src={this.state.image} alt="..."/>);
         } else {
             $imagePreview = null;
         }

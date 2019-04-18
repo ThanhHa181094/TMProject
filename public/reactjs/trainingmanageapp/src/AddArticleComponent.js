@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
-import HomeComponent from './HomeComponent';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 
@@ -30,7 +29,7 @@ class AddArticle extends Component {
 
     handleChangeContent(e) {
         console.log('Content was updated:', e.target.getContent());
-        this.setState({content: e.target.getContent()});
+        this.setState({ content: e.target.getContent() });
     }
 
     handleChangeImage(e) {
@@ -77,7 +76,8 @@ class AddArticle extends Component {
         if (this.checkBase64IsImage(article.image)) {
             axios.post('http://localhost/article', article)
                 .then(response => {
-                    console.log(response);
+                    console.log(response)
+                    this.props.history.push('/')
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -92,11 +92,11 @@ class AddArticle extends Component {
     render() {
         let $imagePreview = null;
         if (this.state.image && this.checkBase64IsImage(this.state.image)) {
-            $imagePreview = (<img src={this.state.image} />);
+            $imagePreview = (<img className='img-thumbnail' src={this.state.image} alt="..." />);
         } else {
             $imagePreview = null;
         }
-        
+
         return (
             <div>
 
@@ -125,6 +125,9 @@ class AddArticle extends Component {
                             <span className='btn btn-default btn-file'>
                                 <input type='file' id='image' name='image' onChange={this.handleChangeImage} required accept=".jpg,.png,.gif,.jpeg" />
                             </span>
+                        </div>
+                        <div>
+                            {$imagePreview}
                         </div>
                         <div className='form-group'>
                             <label htmlFor='video_link'>Video link</label>

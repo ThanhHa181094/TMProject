@@ -49,12 +49,13 @@ class ArticleController extends Controller
             $name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
             $image = convertBase64ToImage($image);
             
-            file_put_contents("images/{$name}", $image);
+            file_put_contents("reactjs/trainingmanageapp/src/images/{$name}", $image);
             $article->image_link = $name;
         }
         $article->title = $request->input('title');
         $article->content = $request->input('content');
         $article->video_link = $request->input('video_link');
+        $article->views = 0;
         $article->save();
         
         return $article;
@@ -71,7 +72,7 @@ class ArticleController extends Controller
 
             $image = convertBase64ToImage($image);
 
-            file_put_contents("images/{$name}", $image);
+            file_put_contents("reactjs/trainingmanageapp/src/images/{$name}", $image);
             $article->image_link = $name;
         }
         $article->title = $request->input('title');
@@ -87,5 +88,14 @@ class ArticleController extends Controller
         $article = Article::findOrFail($id);
         $article->delete();
         return 204;
+    }
+
+    public function updateView(Request $request, $id)
+    {
+        $article = Article::find($id);
+        $article->views += 1;
+        $article->save();
+        return $article->views;
+
     }
 }

@@ -19,4 +19,4 @@ $router->get('article/{id}', 'ArticleController@getArticleById');
 $router->post('article', 'ArticleController@createArticle');
 $router->delete('article/{id}', 'ArticleController@deleteArticle');
 $router->put('article/{id}', 'ArticleController@updateArticle');
-
+$router->patch('article/{id}', 'ArticleController@updateView');

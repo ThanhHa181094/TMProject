@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-
-import axios from 'axios';
-import ReactDOM from "react-dom";
-import Pagination from "react-js-pagination";
-import './bootstrap.min.css';
 import './App.css';
-import MenuComponent from './MenuComponent';
-
-
+import axios from 'axios';
+import './bootstrap.min.css';
+import {Link} from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
 
 class HomeComponent extends Component {
     constructor(props) {
@@ -22,18 +18,19 @@ class HomeComponent extends Component {
     componentDidMount() {
         axios.get('http://localhost/article')
             .then(response => {
-                console.log(response.data);
                 this.setState({ items: response.data });
             })
             .catch(function (error) {
                 console.log(error)
             })
     }
+
     handleClick(event) {
         this.setState({
             currentPage: Number(event.target.id)
         });
     }
+
     render() {
         const { items, currentPage, itemsPerPage } = this.state;
 
@@ -45,10 +42,10 @@ class HomeComponent extends Component {
         const renderItems = currentItems.map((item, index) => {
             return (
                 <div className="card" key={item.id}>
-                    <img id="picture" src={item.image_link} className="card-img-top" alt="..." />
+                    <img id="picture" src={require("./images/" + item.image_link)} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title">{item.title}</h5>
-                        <p className="card-text">{item.content}</p>
+                        <Link className='card-link' to={'/articles/detail/' + item.id}><h4>{item.title}</h4></Link>
+                        <p className="card-text">{ ReactHtmlParser(item.content) }</p>
                         <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
@@ -56,7 +53,6 @@ class HomeComponent extends Component {
             );
 
         });
-
 
         // Logic for displaying page numbers
         const pageNumbers = [];
@@ -66,7 +62,7 @@ class HomeComponent extends Component {
 
         const renderPageNumbers = pageNumbers.map(number => {
             return (
-                <li 
+                <li
                     key={number}
                     id={number}
                     onClick={this.handleClick}
@@ -97,39 +93,12 @@ class HomeComponent extends Component {
                     </a>
                 </div>
 
-                {/* Menu */}
-                <nav className="navbar navbar-expand-lg navbar-light bg-light" id="menu">
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavDropdown">
-
-                        <ul className="navbar-nav" id="Main_Menu">
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Home</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">About us</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">News</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                               <a className="nav-link" href="#">Elements</a>
-                            </li>
-                            <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-
                 {/* Content */}
                 <div className="container" id="All_Content">
                     <div>
                         <div className="card-columns" id="All">
                             {renderItems}
-                        </div>                     
+                        </div>
                         <ul id="page-numbers">
                             {renderPageNumbers}
                         </ul>
@@ -140,6 +109,4 @@ class HomeComponent extends Component {
         );
     }
 }
-
-
 export default HomeComponent
