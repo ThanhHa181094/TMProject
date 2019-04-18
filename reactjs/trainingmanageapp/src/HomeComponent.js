@@ -17,7 +17,6 @@ class HomeComponent extends Component {
     componentDidMount() {
         axios.get('http://localhost/article')
             .then(response => {
-                console.log(response.data);
                 this.setState({ items: response.data });
             })
             .catch(function (error) {
@@ -44,8 +43,7 @@ class HomeComponent extends Component {
                 <div className="card" key={item.id}>
                     <img id="picture" src={item.image_link} className="card-img-top" alt="..." />
                     <div className="card-body">
-                        <Link to={'/articles/detail/'+item.id}>detail</Link>
-                        <a className="card-title">{item.title}</a>
+                        <Link to={'/articles/detail/'+item.id}>{item.title}</Link>
                         <p className="card-text">{item.content}</p>
                         <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                     </div>

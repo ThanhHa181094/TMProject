@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import HomeComponent from './HomeComponent';
-import AddArticle from './AddArticle';
-import DetailComponent from './DetailComponent';
+import AddArticle from './AddArticleComponent';
+import DetailComponent from './Detail/DetailComponent';
+import EditComponent from './EditArticleComponent'
 export default class Header extends Component {
     render() {
         return (
@@ -20,13 +21,13 @@ export default class Header extends Component {
                                 <Link to ="/articles/add" className="nav-link">Add article</Link>
                             </li>
                             <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">News</a>
+                                <div className="nav-link" href="#">News</div>
                             </li>
                             <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Elements</a>
+                                <div className="nav-link" href="#">Elements</div>
                             </li>
                             <li className="nav-item" id="item">
-                                <a className="nav-link" href="#">Contact Us</a>
+                                <div className="nav-link" href="#">Contact Us</div>
                             </li>
                         </ul>
                     </div>
@@ -34,6 +35,7 @@ export default class Header extends Component {
                 <Route exact path="/" component={HomeComponent} />
                 <Route path="/articles/add" component={AddArticle} />
                 <Route path="/articles/detail/:id" component={DetailComponent}></Route>
+                <Route path="/articles/edit/:id" component={EditComponent}></Route>
             </Router>
         );
     }
