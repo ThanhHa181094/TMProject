@@ -3,50 +3,14 @@ import axios from 'axios';
 import './App.css';
 import './bootstrap.min.css';
 import { Link} from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
 class DetailComponent extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            email: '',
-            image: '',
-            video_link: '',
-            view: ''
+            
         }
-
-        this.handleChangeTitle = this.handleChangeTitle.bind(this);
-        this.handleChangeContent = this.handleChangeContent.bind(this);
-        this.handleChangeImage = this.handleChangeImage.bind(this);
-        this.handleChangeVideoLink = this.handleChangeVideoLink.bind(this);
-
-
-    }
-
-
-    handleChangeTitle(e) {
-        this.setState({
-            title: e.target.value
-        });
-    }
-
-    handleChangeContent(e) {
-        this.setState({
-            content: e.target.value
-        });
-    }
-
-    handleChangeVideoLink(e) {
-        this.setState({
-            video_link: e.target.value
-        });
-    }
-
-    handleChangeImage(e) {
-        let files = e.target.files || e.dataTransfer.files;
-        if (!files.length)
-            return;
-        this.createImage(files[0]);
     }
 
     handleDeleteArticle = () => {
@@ -54,27 +18,31 @@ class DetailComponent extends React.Component {
         axios.delete('http://localhost/article/' + this.props.match.params.id)
         .then(res => {
             console.log(res);
+            this.props.history.push('/');
         })
-        this.props.history.push('/');
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         //Get selected article
         axios.get('http://localhost/article/' + this.props.match.params.id)
             .then(response => {
-                this.setState(response.data)
+                this.updateViewArticle();
+                this.setState(response.data);
             })
             .catch(function (error) {
                 console.log(error)
             });
             
         //Update views of article    
+        
+    }
+
+    updateViewArticle = () =>{
         axios.patch('http://localhost/article/' + this.props.match.params.id)
             .then(response => {
 
             })
     }
-
 
     render() {
         return (
@@ -84,25 +52,24 @@ class DetailComponent extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <img src={require("./images/item-pic.jpg")} alt="..." className="img-thumbnail" />
+                            <img src={'http://localhost/images/' + this.state.image_link} alt="..." className="img-thumbnail" />
                         </div>
                         <div className="col">
                             <div className="form-group">
-                                <h1>Title:</h1>
-                                <p>{this.state.title}</p>
+                                <h1>{this.state.title}</h1>
                             </div>
                             <div className="form-group">
-                                <h1>Content:</h1>
-                                <p>{this.state.content}</p>
+                                <h3>Content: </h3>
+                                <span>{ ReactHtmlParser(this.state.content) }</span>
                             </div>
                             <div className="form-group">
-                                <h1>View:</h1>
+                                <h5>View:</h5>
                                 <p>{this.state.views}</p>
                             </div>
                             <div className="form-group">
-                                <iframe width="500" height="200" src="https://www.youtube.com/embed/qmPmwdshCMw"
-                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    lowfullscreen>
+                                <iframe title='video' width="500" height="200" src={this.state.video_link}
+                                    frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    lowfullscreen='true'>
                                 </iframe>
                             </div>
 

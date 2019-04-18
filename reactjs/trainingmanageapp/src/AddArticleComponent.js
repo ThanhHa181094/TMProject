@@ -3,13 +3,7 @@ import './bootstrap.min.css';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 
-function FormError(props) {
-    if (props.isHidden) { return null; }
-
-    return (<div className='alert alert-warning'>{props.errorMessage}</div>)
-}
-
-class EditArticle extends Component {
+class AddArticle extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,8 +11,7 @@ class EditArticle extends Component {
             content: '',
             image: '',
             video_link: '',
-            isInputValid: true,
-            errorMessage: ''
+            isInputValid: true
         }
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -28,16 +21,6 @@ class EditArticle extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        axios.get('http://localhost/article/'+ this.props.match.params.id)
-            .then(response => {
-                this.setState(response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
-
     handleChangeTitle(e) {
         this.setState({
             title: e.target.value
@@ -45,9 +28,8 @@ class EditArticle extends Component {
     }
 
     handleChangeContent(e) {
-        this.setState({
-            content: e.target.getContent()
-        });
+        console.log('Content was updated:', e.target.getContent());
+        this.setState({ content: e.target.getContent() });
     }
 
     handleChangeImage(e) {
@@ -75,9 +57,11 @@ class EditArticle extends Component {
 
     checkBase64IsImage(base64) {
         var isImage = base64.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/)[1];
-        if (isImage === 'image/jpg' | isImage === 'image/jpeg' | isImage === 'image/gif' | isImage === 'image/png')
+        if (isImage === 'image/jpg' | isImage === 'image/jpeg' | isImage === 'image/gif' | isImage === 'image/png') {
             return true;
-        return false;
+        } else {
+            return false;
+        }
     }
 
     handleSubmit(e) {
@@ -88,18 +72,19 @@ class EditArticle extends Component {
             image: this.state.image,
             video_link: this.state.video_link
         }
+        console.log(article)
         if (this.checkBase64IsImage(article.image)) {
-            axios.put('http://localhost/article/' +this.props.match.params.id, article)
+            axios.post('http://localhost/article', article)
                 .then(response => {
                     console.log(response);
+                    this.props.history.push('/');
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         } else {
             this.setState({
-                isInputValid: false,
-                errorMessage: 'You must choose image'
+                isInputValid: false
             });
         }
     }
@@ -107,37 +92,37 @@ class EditArticle extends Component {
     render() {
         let $imagePreview = null;
         if (this.state.image && this.checkBase64IsImage(this.state.image)) {
-            $imagePreview = (<img src={this.state.image} alt="..."/>);
+            $imagePreview = (<img className='img-thumbnail' src={this.state.image} alt="..." />);
         } else {
             $imagePreview = null;
         }
 
         return (
             <div>
-                {/* Form edit article */}
+                {/* Form add article */}
                 <div className='container'>
-                    <h2>Edit Article</h2>
+                    <h2>Add Article</h2>
                     <form onSubmit={this.handleSubmit}>
                         <div className='form-group'>
                             <label htmlFor='title'>Title</label>
                             <input type='text' className='form-control' name='title' id='title' required value={this.state.title} onChange={this.handleChangeTitle} />
                         </div>
-                        <Editor
-                            initialValue={this.state.content}
-                            init={{
-                                height: 300,
-                                plugins: 'link image code',
-                                toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-                            }}
-                            onChange={this.handleChangeContent}
-                        />
-                        <FormError
-                            isHidden={this.state.isInputValid}
-                            errorMessage={this.state.errorMessage} />
+                        <div className='form-group'>
+                            <label htmlFor='content'>Content</label>
+                            <Editor
+                                init={{
+                                    height: 300,
+                                    plugins: 'link image code',
+                                    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+                                }}
+                                onChange={this.handleChangeContent}
+                            />
+                        </div>
+
                         <div className="form-group">
                             <label htmlFor='image'>Image</label>
                             <span className='btn btn-default btn-file'>
-                                <input type='file' id='image' name='image' onChange={this.handleChangeImage} required />
+                                <input type='file' id='image' name='image' onChange={this.handleChangeImage} required accept=".jpg,.png,.gif,.jpeg" />
                             </span>
                         </div>
                         <div>
@@ -154,4 +139,4 @@ class EditArticle extends Component {
         );
     }
 }
-export default EditArticle
+export default AddArticle

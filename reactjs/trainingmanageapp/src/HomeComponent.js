@@ -42,11 +42,11 @@ class HomeComponent extends Component {
         const renderItems = currentItems.map((item, index) => {
             return (
                 <div className="card" key={item.id}>
-                    <img id="picture" src={require("./images/" + item.image_link)} className="card-img-top" alt="..." />
+                    <img id="picture" src={'http://localhost/images/' + item.image_link} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <Link className='card-link' to={'/articles/detail/' + item.id}><h4>{item.title}</h4></Link>
-                        <p className="card-text">{ ReactHtmlParser(item.content) }</p>
-                        <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                        <div className="card-text">{ ReactHtmlParser(item.content) }</div>
+                        <div className="card-text"><small className="text-muted">Last updated 3 mins ago</small></div>
                     </div>
                 </div>
 
