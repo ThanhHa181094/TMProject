@@ -55,6 +55,7 @@ class ArticleController extends Controller
         $article->title = $request->input('title');
         $article->content = $request->input('content');
         $article->video_link = $request->input('video_link');
+        $article->views = 0;
         $article->save();
         
         return $article;
