@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './DetailStyle.css';
 import '../bootstrap.min.css';
+import { Link} from 'react-router-dom';
 class DetailComponent extends React.Component {
 
     constructor(props) {
@@ -11,7 +12,7 @@ class DetailComponent extends React.Component {
             email: '',
             image: '',
             video_link: '',
-            id: ''
+            view: ''
         }
 
         this.handleChangeTitle = this.handleChangeTitle.bind(this);
@@ -56,16 +57,17 @@ class DetailComponent extends React.Component {
         })
         this.props.history.push('/');
     }
+
     componentDidMount() {
         //Get selected article
         axios.get('http://localhost/article/' + this.props.match.params.id)
             .then(response => {
                 this.setState(response.data)
-
             })
             .catch(function (error) {
                 console.log(error)
             });
+            
         //Update views of article    
         axios.patch('http://localhost/article/' + this.props.match.params.id)
             .then(response => {
@@ -98,7 +100,11 @@ class DetailComponent extends React.Component {
                                 <p>{this.state.content}</p>
                             </div>
                             <div className="form-group">
-                                <iframe width="500" height="280" src="https://www.youtube.com/embed/qmPmwdshCMw"
+                                <h1>View:</h1>
+                                <p>{this.state.views}</p>
+                            </div>
+                            <div className="form-group">
+                                <iframe width="500" height="200" src="https://www.youtube.com/embed/qmPmwdshCMw"
                                     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                     lowfullscreen>
                                 </iframe>
@@ -110,10 +116,8 @@ class DetailComponent extends React.Component {
                     <br></br>
                     <div className="row">
                         <div className="btn-group">
-                            <button type="button" className="btn btn-primary">Edit</button>
-
+                            <Link to={'/articles/edit/'+this.state.id}><button className="btn btn-primary" type="submit">Edit</button></Link>
                             <button onClick={this.handleDeleteArticle} className="btn btn-primary" type="submit">Delete</button>
-
                         </div>
                     </div>
                 </div>
