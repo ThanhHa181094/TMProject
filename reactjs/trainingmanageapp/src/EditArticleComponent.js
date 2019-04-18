@@ -106,7 +106,7 @@ class EditArticle extends Component {
     }
 
     render() {
-        let $imagePreview = null;
+        let $imagePreview = (<img src={'http://localhost/images/'+this.state.image_link} alt="..."/>);
         if (this.state.image && this.checkBase64IsImage(this.state.image)) {
             $imagePreview = (<img src={this.state.image} alt="..."/>);
         } else {

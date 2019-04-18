@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './bootstrap.min.css';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import { Editor } from '@tinymce/tinymce-react';
 
 class AddArticle extends Component {
@@ -133,6 +134,7 @@ class AddArticle extends Component {
                             <input type='text' className='form-control' name='video_link' id='video_link' required value={this.state.video_link} onChange={this.handleChangeVideoLink} />
                         </div>
                         <button type='submit' className='btn btn-primary'>Save</button>
+                        <Link className='btn btn-info' to={'/'}>Back</Link>
                     </form>
                 </div>
             </div>
