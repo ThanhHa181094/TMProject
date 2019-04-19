@@ -49,7 +49,7 @@ $app->withEloquent();
 $app->middleware([
     App\Http\Middleware\CorsMiddleware::class
 ]);
-
+$app->register(Intervention\Image\ImageServiceProviderLumen::class);
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
